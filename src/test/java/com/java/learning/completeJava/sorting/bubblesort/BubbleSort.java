@@ -1,4 +1,4 @@
-package com.java.learning.completJava.sorting.bubblesort;
+package com.java.learning.completeJava.sorting.bubblesort;
 
 public class BubbleSort {
 
