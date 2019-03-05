@@ -24,6 +24,12 @@ public class Runner {
 		System.out.println("Search for 30");
 		System.out.println(tree.findNode(30));
 		
+		System.out.println("Remove Node 25");
+		tree.remove(25);
+		System.out.println("Pre Order Traversal ... \n");
+		tree.preOrderTraversalTree(tree.root);
+		
+		
 	}
 
 }
