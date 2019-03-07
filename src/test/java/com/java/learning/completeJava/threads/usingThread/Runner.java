@@ -9,7 +9,9 @@ public class Runner {
 		MyThread t3 = new MyThread("phase3");
 		t1.start();
 		t2.start();
-		t3.start();		
+		t3.start();	
+		// t1.start(); throws illegalThreadStateException
+		// t1.run(); fine, but does not start a separate call stack
 	}
 
 }
