@@ -16,6 +16,10 @@ public class Runner {
 			System.out.println(m.getKey()+"---"+m.getValue());
 		}
 		
+		System.out.println("Keys "+map.keySet());
+		System.out.println("Values "+ map.values());
+		System.out.println("Entry values "+map.entrySet());
+		
 	}
 
 }
