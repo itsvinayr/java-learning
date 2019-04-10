@@ -1,0 +1,78 @@
+package com.java.learning.completeJava.problemStatements;
+
+import org.testng.annotations.Test;
+
+public class LinkedListProbStatements {
+	
+	@Test
+	public void findMiddleElementOnePass() {
+		
+		MyLinkedList list = new MyLinkedList();
+		list.add(12);
+		list.add(27);
+		list.add(36);
+		list.add(32);
+		list.add(109);
+		list.add(68);
+		
+		list.findMiddleElementInOnePass();
+		
+		list.printList();
+		
+	}
+
+}
+
+class Node{
+	Node next;
+	int data;
+	Node(int data){
+		this.data=data;
+		this.next=null;
+	}
+}
+
+class MyLinkedList{
+	Node head;
+	public void add(int data) {
+		Node node = new Node(data);
+		if(head==null) {
+			head = node;
+		}else {
+			Node n = head;
+			while(n.next!=null) {
+				n = n.next;
+			}
+			n.next=node;
+		}
+	}
+	
+	public void findMiddleElementInOnePass() {
+		int length = length();
+		int middle = length/2;
+		Node node = head;
+		for(int i=0; i<middle; i++) {
+			node=node.next;
+		}
+		System.out.println("element at middle of the list is "+node.data);
+	}
+	
+	public int length() {
+		int length=0;
+		Node node = head;
+		while(node.next!=null) {
+			length++;
+			node=node.next;
+		}
+		return length;
+	}
+	
+	public void printList() {
+		Node node = head;
+		while(node.next!=null) {
+			System.out.print(node.data+"\t");
+			node = node.next;
+		}
+		System.out.print(node.data);
+	}
+}
