@@ -16,6 +16,24 @@ public class LinkedListProbStatements {
 		list.add(68);
 		
 		list.findMiddleElementInOnePass();
+		list.reverseList();
+		
+		list.printList();
+		
+	}
+	
+	@Test
+	public void reverseList() {
+		
+		MyLinkedList list = new MyLinkedList();
+		list.add(12);
+		list.add(27);
+		list.add(36);
+		list.add(32);
+		list.add(109);
+		list.add(68);
+		
+		list.reverseList();
 		
 		list.printList();
 		
@@ -55,6 +73,19 @@ class MyLinkedList{
 			node=node.next;
 		}
 		System.out.println("element at middle of the list is "+node.data);
+	}
+	
+	public void reverseList() {
+		Node pointer = head;
+		Node current, previous = null;
+		
+		while(pointer!=null) {
+			current = pointer;
+			pointer = current.next;
+			current.next = previous;
+			previous = current;
+			head = current;
+		}
 	}
 	
 	public int length() {
