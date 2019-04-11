@@ -1,0 +1,21 @@
+1. JRE = JVM + Library Classes
+2. JDK = JRE + Development tools
+3. Does JVM create object of main class?
+		No, as main method is a static, its object cannot be created.
+		Example:
+		abstract class Hello{
+			public static void main(String[] args){
+				System.out.println("Hello");
+			}
+		}
+		Output:
+			Hello
+4. Method overloading is not possible with return type and throws
+5. Constructor cannot be overriden but can be overloaded.
+6. Overridden method cannot have restrictive access modifier.
+	Example: parent with public, child with protected.
+7. Static methods cannot be overridden.
+8. Constructor cannot be enclosed in a try catch block
+9. Hashtable is synchronized and does not allow null keys or values
+	Hashmap is not synchronized and allows one null and multiple null values
+10. finally might not execute in all cases, where System.exit call is performed.

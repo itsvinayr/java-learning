@@ -1,0 +1,41 @@
+1. class is blue print from which invidual objects are created.
+2. object is an instantiation of class, which has its own behavior(method) and state(variable)
+3. identifiers should begin with a letter, $, _
+5. Modifiers
+	Access Modifier -   public - visible to world
+						private - visible to class
+						protected - visible to package and subclasses
+						default - visible to package
+	Non Access Modifiers -  final - finalizes implementation of classes, methods and variables
+							abstract - creates abstract classes and methods
+							strictfp - restricting floating point values to be same on all platforms
+							static - creating class methods and variables
+							sychronized, volatile -- used with threads
+6. Variables
+	local variables
+	class variables
+	instance variable
+7. Inheritance
+	Concept of deriving a class from another class
+8. Interface
+	is a contract between objects on how to communicate with each other.
+	it defines methods which needs to be implemented by its derived classes or sub classes.
+9. Abstraction
+	process of hiding implementation details from the user.
+	its achieved by interfaces & abstract classes
+10. Encapsulation
+		process of wrapping data and code acting on the data.
+		its achieved using a class
+11. Constructor used to initialize variables in a class.
+	similar to method declaration but no return type.
+12. variable arguments (int ...)
+13. finalize method is called just before the destruction of object.
+14. Exceptions
+		checked - at compile time
+		unchecked - at run time
+		error - beyond control of user
+15. throws is used to handle checked exception
+16. throw is used to throw an exception
+17. subclass inherits all the members of its super class except its private properties.
+18. Polymorphism
+		Ability of an object to take multiple forms.
