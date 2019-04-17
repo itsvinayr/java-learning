@@ -1,4 +1,4 @@
-package com.java.learning.completeJava.jsonParsing.medium;
+package com.java.learning.completeJava.gson.jsonParsing.medium;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -12,7 +12,7 @@ public class ParseQuiz {
 	public static void main(String[] args) throws FileNotFoundException {
 		Gson gson = new Gson();
 		BufferedReader reader = new BufferedReader(new FileReader(new File(System.getProperty("user.dir")
-				+ "\\src\\test\\java\\com\\java\\learning\\completeJava\\jsonParsing\\quiz.json")));
+				+ "\\src\\test\\java\\com\\java\\learning\\completeJava\\gson\\jsonParsing\\medium\\quiz.json")));
 		Quiz quiz = gson.fromJson(reader, Quiz.class);
 		System.out.println(quiz);
 	}

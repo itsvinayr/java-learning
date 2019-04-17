@@ -1,4 +1,4 @@
-package com.java.learning.completeJava.jsonParsing.medium;
+package com.java.learning.completeJava.gson.jsonParsing.medium;
 
 import java.util.List;
 

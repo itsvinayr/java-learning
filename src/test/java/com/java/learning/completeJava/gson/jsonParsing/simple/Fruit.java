@@ -1,4 +1,4 @@
-package com.java.learning.completeJava.jsonParsing.simple;
+package com.java.learning.completeJava.gson.jsonParsing.simple;
 
 public class Fruit {
 	
