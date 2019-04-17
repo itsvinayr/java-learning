@@ -1,55 +1,90 @@
 package com.java.learning.completeJava.sorting.mergeSort;
 
-import java.util.Arrays;
-
 public class MergeSort {
 	
-	public void mergeSort (int[] list, int lowIndex, int highIndex) {
-		if (lowIndex == highIndex)
-			return;
-		else {
-			int midIndex = (lowIndex + highIndex) / 2;
-			mergeSort(list, lowIndex, midIndex);
-			mergeSort(list, midIndex + 1, highIndex);
-			merge(list, lowIndex, midIndex, highIndex);
-		} 
+	public static void printArray(int[] arr) {
+		System.out.println();
+		for(int a: arr)
+			System.out.print(a+"\t");
+		System.out.println();
 	}
 	
-	public void merge(int[] list, int lowIndex, int midIndex, int highIndex) {
-		int[] L = new int[midIndex - lowIndex + 2];
+	public static int[] mergesort(int[] arr) {
 		
-		for (int i = lowIndex; i <= midIndex; i++) {
-			L[i - lowIndex] = list[i];
+		// control to come out of recursive call
+		if(arr.length<=1) {
+			return arr;
 		}
-		L[midIndex - lowIndex + 1] = Integer.MAX_VALUE;
-		int[] R = new int[highIndex - midIndex + 1];
 		
-		for (int i = midIndex + 1; i <= highIndex; i++) {
-			R[i - midIndex - 1] = list[i];
+		int midpoint = arr.length/2;
+		int[] left = new int[midpoint];
+		int[] right;
+		
+		// check if number of elements in array is even
+		if(arr.length%2==0) {
+			right = new int[midpoint];
+		}else {
+			right = new int[midpoint+1];
 		}
-		R[highIndex - midIndex] = Integer.MAX_VALUE;
-		int i = 0, j = 0;
 		
-		for (int k = lowIndex; k <= highIndex; k++) {
-			if (L[i] <= R[j]) {
-				list[k] = L[i];
-				i++;
-			}
-			else {
-				list[k] = R[j];
-				j++;
-			}
-		} 
+		// fill left and right arrays
+		for(int i=0; i<left.length; i++) {
+			left[i]=arr[i];
+		}
+		
+		for(int j=0; j<right.length; j++) {
+			right[j]=arr[midpoint+j];
+		}
+		
+		// define a result array
+		int[] result = new int[arr.length];
+		
+		// Recursive calls for left and right arrays
+		left = mergesort(left);
+		right = mergesort(right);
+		
+		result = merge(left, right);
+		
+		return result;
+		
 	}
 
-	public static void main(String[] args) {
+	// merges left and right array in ascending order
+	private static int[] merge(int[] left, int[] right) {
+		//merged result array
+		int[] result = new int[left.length+right.length];
 		
-		MergeSort ms = new MergeSort();
-		int[] A = {9,0,1,3,4,5,2,9,8,7,6,5,9,1,0,9};
-		System.out.println(Arrays.toString(A));
-		ms.mergeSort(A, 0, A.length-1);
-		System.out.println(Arrays.toString(A));
-
+		int leftPointer, rightPointer, resultPointer;
+		leftPointer = rightPointer = resultPointer = 0;
+		
+		// while there are items in either of the array
+		while(leftPointer<left.length || rightPointer<right.length) {
+			// if there are items in both the arrays
+			if(leftPointer<left.length && rightPointer<right.length) {
+				// if left item is less than right item
+				if(left[leftPointer]<right[rightPointer]) {
+					result[resultPointer++]=left[leftPointer++];
+				}else {
+					result[resultPointer++]=right[rightPointer++];
+				}
+			// if there are items only in left array
+			}else if(leftPointer<left.length) {
+				result[resultPointer++]=left[leftPointer++];
+			// if there are items only in right array
+			}else if(rightPointer<right.length) {
+				result[resultPointer++]=right[rightPointer++];
+			}
+		}
+		return result;
+	}
+	
+	public static void main(String[] args) {
+		int[] arr = {2,9,12,1,3,98,43,6,8,100};
+		System.out.println("Before sorting : ");
+		printArray(arr);
+		arr = mergesort(arr);
+		System.out.println("After sorting : ");
+		printArray(arr);
 	}
 
 }
