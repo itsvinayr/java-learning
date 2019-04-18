@@ -15,7 +15,7 @@ public class ParseData {
 		
 		Gson gson = new Gson();
 		Data data = gson.fromJson(dataAsString, Data.class);
-		System.out.println("printing question ... "+data.q.question);
+		System.out.println("printing question ... "+data);
 
 	}
 

@@ -6,6 +6,9 @@ public class Q1 {
 	
 	String question;
 	List<String> options;
-	String answer;
+	@Override
+	public String toString() {
+		return "Q1 [question=" + question + ", options=" + options.toString() + "]";
+	}
 
 }
