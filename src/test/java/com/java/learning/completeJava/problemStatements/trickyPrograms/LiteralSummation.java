@@ -1,4 +1,4 @@
-package com.java.learning.completeJava.trickyPrograms;
+package com.java.learning.completeJava.problemStatements.trickyPrograms;
 
 public class LiteralSummation {
 	
