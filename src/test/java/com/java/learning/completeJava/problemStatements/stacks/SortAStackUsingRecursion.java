@@ -1,86 +1,41 @@
 package com.java.learning.completeJava.problemStatements.stacks;
+
 import java.util.Stack;
 
 public class SortAStackUsingRecursion {
 	
-	// using Stack class for 
-    // stack implementation 
-    static Stack<Character> st = new Stack<Character>(); 
-      
-    // Below is a recursive function  
-    // that inserts an element 
-    // at the bottom of a stack. 
-    static void insert_at_bottom(char x) 
-    { 
-  
-        if(st.isEmpty()) 
-            st.push(x); 
-  
-        else
-        { 
-              
-            // All items are held in Function 
-            // Call Stack until we reach end 
-            // of the stack. When the stack becomes 
-            // empty, the st.size() becomes 0, the 
-            // above if part is executed and  
-            // the item is inserted at the bottom 
-            char a = st.peek(); 
-            st.pop(); 
-            insert_at_bottom(x); 
-  
-            // push allthe items held  
-            // in Function Call Stack 
-            // once the item is inserted  
-            // at the bottom 
-            st.push(a); 
-        } 
-    } 
-      
-    // Below is the function that  
-    // reverses the given stack using 
-    // insert_at_bottom() 
-    static void reverse() 
-    { 
-        if(st.size() > 0) 
-        { 
-              
-            // Hold all items in Function 
-            // Call Stack until we 
-            // reach end of the stack  
-            char x = st.peek(); 
-            st.pop(); 
-            reverse(); 
-              
-            // Insert all the items held  
-            // in Function Call Stack 
-            // one by one from the bottom 
-            // to top. Every item is 
-            // inserted at the bottom  
-            insert_at_bottom(x); 
-        } 
-    } 
+	public static void sortStack(Stack<Integer> s) {
+		if(!s.isEmpty()) {
+			int tmp = s.pop();
+			sortStack(s);
+			insertAtBottom(s,tmp);
+		}
+	}
+	
+	public static void insertAtBottom(Stack<Integer> s, int tmp) {
+		if(s.isEmpty() || tmp>s.peek()) {
+			s.push(tmp);
+			return;
+		}
+		int a = s.pop();
+		insertAtBottom(s, tmp);
+		s.push(a);
+	}
 
 	public static void main(String[] args) {
-		// push elements into 
-        // the stack 
-        st.push('1'); 
-        st.push('2'); 
-        st.push('3'); 
-        st.push('4'); 
-          
-        System.out.println("Original Stack"); 
-          
-        System.out.println(st); 
-          
-        // function to reverse  
-        // the stack 
-        reverse(); 
-          
-        System.out.println("Reversed Stack"); 
-          
-        System.out.println(st);
-
+		
+		Stack<Integer> s = new Stack<Integer>();
+		s.push(100);
+		s.push(2);
+		s.push(-1);
+		s.push(120);
+		s.push(8);	
+		
+		sortStack(s);
+		
+		while(!s.isEmpty()) {
+			System.out.print(s.pop()+" ");
+		}
 	}
 
 }
