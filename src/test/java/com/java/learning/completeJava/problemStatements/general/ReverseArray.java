@@ -1,4 +1,4 @@
-package com.java.learning.completeJava.problemStatements;
+package com.java.learning.completeJava.problemStatements.general;
 
 import java.util.Arrays;
 
