@@ -10,8 +10,16 @@ public class MiddleOfList {
 		list.addSequentially(17);
 		list.addSequentially(23);
 		list.addSequentially(19);
+		list.addSequentially(72);
 
 		list.print();
+
+		// printing middle of linked list by using even and odd mechanisms
+		System.out.println(list.getMiddleOfLinkedList(list.head));
+
+		// printing middle of the linked list using pointers
+		list.addSequentially(87);
+		System.out.println(list.getMiddleOfLinkedListUsingPointers(list.head));
 
 	}
 

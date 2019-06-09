@@ -1,9 +1,11 @@
 package com.java.learning.completeJava.problemStatements.linkedList;
 
+import java.util.HashSet;
+
 class LinkedList {
 
 	Node head;
-	static int count = 0, data = 0;
+	static int count = 0, data = 0, frequency = 0;
 
 	/**
 	 * Adding a node at the front
@@ -270,6 +272,137 @@ class LinkedList {
 		}
 		return data;
 	}
+
+	/**
+	 * finding middle of a linked list
+	 * @param head
+	 * @return
+	 */
+	public int getMiddleOfLinkedList(Node head){
+		int length = length();
+		if(length%2==0){
+			int count = (length/2);
+			int counter = 0;
+			while(head!=null && count!=counter){
+				counter++;
+				head = head.next;
+			}
+			return head.data;
+		}else{
+			int count = (length/2);
+			int counter = 0;
+			while(head!=null && count!=counter){
+				counter++;
+				head=head.next;
+			}
+			return head.data;
+		}
+	}
+
+	/**
+	 * return middle of the linked list using pointers
+	 * @param head
+	 * @return
+	 */
+	public int getMiddleOfLinkedListUsingPointers(Node head){
+		Node fastPointer = head;
+		Node slowPointer = head;
+
+		if(head!=null){
+			while(fastPointer!=null && fastPointer.next!=null){
+				fastPointer=fastPointer.next.next;
+				slowPointer=slowPointer.next;
+			}
+		}
+		return slowPointer.data;
+	}
+
+	/**
+	 * return count of item occurrences in linked list using recursion
+	 * @param item
+	 * @param head
+	 * @return
+	 */
+	public int count(int item, Node head){
+		if(head==null){
+			return frequency;
+		}
+		if(head.data==item){
+			frequency++;
+		}
+		return count(item, head.next);
+	}
+
+	/**
+	 * detects a loop in linked list
+	 * @param head
+	 * @return
+	 */
+	public boolean detectLoop(Node head){
+		HashSet<Node> set = new HashSet<Node>();
+		while(head!=null){
+			if(set.contains(head)){
+				return true;
+			}
+			set.add(head);
+			head = head.next;
+		}
+		return false;
+	}
+
+	/**
+	 * detect loop using FlyodsCycleFinding algorithm
+	 * Traverse linked list using two pointers, move one pointer by one
+	 * and other by 2, if these pointers meet at the same node, then loop exists.
+	 * @param head
+	 * @return
+	 */
+	public boolean detectLoopUsingFlyodsCycleFinding(Node head){
+		Node slowPointer = head;
+		Node fastPointer = head;
+		while(slowPointer!=null && fastPointer!=null && fastPointer.next!=null){
+			slowPointer=slowPointer.next;
+			fastPointer=fastPointer.next.next;
+			if(slowPointer==fastPointer){
+				return true;
+			}
+		}
+		return false;
+	}
+
+	/**
+	 * returns count of nodes in a loop
+	 * @param head
+	 * @return
+	 */
+	public int countNodesInLoop(Node head){
+		Node slowPointer = head;
+		Node fastPointer = head;
+		while(slowPointer!=null && fastPointer!=null && fastPointer.next!=null){
+			slowPointer=slowPointer.next;
+			fastPointer=fastPointer.next.next;
+			if(slowPointer==fastPointer){
+				return countNodes(slowPointer);
+			}
+		}
+		return 0;
+	}
+
+	/**
+	 * returns count of nodes
+	 * @param slowPointer
+	 * @return
+	 */
+	private int countNodes(Node slowPointer) {
+		int count = 0;
+		Node temp = slowPointer;
+		while(temp.next!=slowPointer){
+			count++;
+			temp=temp.next;
+		}
+		return ++count;
+	}
+
 
 	/**
 	 * Print linked list
