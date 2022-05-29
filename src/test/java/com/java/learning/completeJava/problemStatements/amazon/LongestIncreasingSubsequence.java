@@ -5,6 +5,9 @@ import java.util.Arrays;
 public class LongestIncreasingSubsequence {
     public static void main(String[] args) {
         int[] arr = {10, 22, 9, 33, 21, 50, 41, 60};
+        System.out.println("Given array");
+        for(int i:arr) System.out.print(i+" ");
+        System.out.println();
         int length = arr.length;
         System.out.println("Length of LIS is " + lis(arr, length));
     }
