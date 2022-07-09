@@ -5,12 +5,13 @@ import org.testng.annotations.Test;
 public class Fibonacci {
 	@Test
 	public void generateSeries() {
-		int a=0, b=0, c=1;
-		for(int i=0; i<=20; i++) {
+		int a, b=1, c=1;
+		System.out.println(0+"\n"+1);
+		for(int i=2; i<=20; i++) {
 			a=b;
 			b=c;
 			c=a+b;
-			System.out.println(a);
+			System.out.println(c);
 		}
 	}
 	
@@ -31,18 +32,17 @@ public class Fibonacci {
 	
 	@Test
 	public void usingDynamicProgramming() {
-		for(int i=0; i<=9; i++) {
-			System.out.print(dynamicFib(i)+"\t");
-		}
+		dynamicFib(10);
 	}
 	
-	public int dynamicFib(int n) {
-		int[] f = new int[n+2];
+	public void dynamicFib(int n) {
+		int[] f = new int[n];
 		f[0] = 0;
 		f[1] = 1;
-		for(int i=2; i<=n; i++) {
+		for(int i=2; i<n; i++) {
 			f[i]=f[i-1]+f[i-2];
 		}
-		return f[n];
+
+		for(int i: f) System.out.print(i+"--");
 	}	
 }
